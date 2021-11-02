@@ -12,8 +12,9 @@ main {
   width: 30%;
   margin-top: 5rem;
 }
+
 .title {
-  border: 1px solid;
+  border: 1px solid gray;
 }
 
 .title .titl {
@@ -28,9 +29,7 @@ main {
   padding: 0;
 }
 
-.adddiv {
-  border: 1px solid;
-}
+
 
 .add {
   border: none;
@@ -50,11 +49,17 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid;
+  border: 1px solid gray;
   padding: 0 20px;
 }
 
-.adddiv {
+.addiv {
+  display: flex;
+  align-items: center;
+  border: 1px solid gray;
+}
+
+.checktext {
   display: flex;
   align-items: center;
 }
@@ -63,7 +68,7 @@ main {
   font-size: 30px;
   font-weight: bold;
   padding-right: 20px;
-  color: gainsboro;
+  color: rgb(165, 164, 164);
   cursor: pointer;
 }
 
@@ -71,12 +76,15 @@ main {
   width: 20px;
   height: 20px;
   cursor: pointer;
+  margin-right: 15px;
 }
 
 .clear {
   width: 100%;
   padding: 10px 0;
   background-color: gray;
+  border: 1px solid gray;
+  
 }
 
 .fa-trash-alt {

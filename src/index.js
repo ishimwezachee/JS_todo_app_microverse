@@ -42,8 +42,11 @@ const addTodo = (value) => {
   para.textContent = value;
   const trash = document.createElement("i");
   trash.classList.add("fas", "fa-trash-alt");
-  listItem.appendChild(checkbox);
-  listItem.appendChild(para);
+  const div  =  document.createElement("div");
+  div.classList.add('checktext')
+  div.appendChild(checkbox);
+  div.appendChild(para);
+  listItem.appendChild(div)
   listItem.appendChild(trash);
   list.appendChild(listItem);
   
