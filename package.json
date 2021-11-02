@@ -1,8 +1,8 @@
 {
-  "name": "webpack-exercises",
+  "name": "Todo-list",
   "version": "1.0.0",
-  "description": "",
-  "private": "true",
+  "description": "> This is a todo list web app first mile \r > where the list of todos are rendered dynamically \r > from the array",
+  "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open",
@@ -20,14 +20,18 @@
   },
   "homepage": "https://github.com/ishimwezachee/webpack-exercises#readme",
   "devDependencies": {
-    "css-loader": "^6.4.0",
-    "html-webpack-plugin": "^5.5.0",
-    "style-loader": "^3.3.1",
-    "webpack": "^5.60.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.25.2",
+    "hint": "^6.1.7",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.21.0",
+    "webpack": "^5.61.0",
     "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.3.1"
+    "webpack-dev-server": "^4.4.0"
   },
-  "dependencies": {
-    "lodash": "^4.17.21"
-  }
+  "dependencies": {}
 }
