@@ -3,8 +3,8 @@ body {
   justify-content: center;
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
-  background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+  background-color: #fff;
+  background-image: linear-gradient(315deg, #fff 0%, #d7e1ec 74%);
   height: 100vh;
 }
 
@@ -29,8 +29,6 @@ main {
   padding: 0;
 }
 
-
-
 .add {
   border: none;
   box-sizing: border-box;
@@ -41,8 +39,8 @@ main {
   width: 100%;
   padding-left: 25px;
   font-style: italic;
-  background-color: #ffffff;
-  background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+  background-color: #fff;
+  background-image: linear-gradient(315deg, #fff 0%, #d7e1ec 74%);
 }
 
 .list-item {
@@ -84,7 +82,6 @@ main {
   padding: 10px 0;
   background-color: gray;
   border: 1px solid gray;
-  
 }
 
 .fa-trash-alt {
