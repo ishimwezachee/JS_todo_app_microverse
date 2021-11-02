@@ -32,34 +32,22 @@ const list = document.querySelector(".list");
 
 // Methods/functions
 const addTodo = (value) => {
-  // create list-item
   const listItem = document.createElement("li");
   listItem.classList.add("list-item");
-  // create checkbox
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
   checkbox.classList.add('check');
-
-
-  // create paragraph
   const para = document.createElement("p");
   para.classList.add("task");
   para.textContent = value;
-  // create trash
   const trash = document.createElement("i");
   trash.classList.add("fas", "fa-trash-alt");
-
-  //append to listItems
-
   listItem.appendChild(checkbox);
   listItem.appendChild(para);
   listItem.appendChild(trash);
-  // append to list
   list.appendChild(listItem);
   
 };
-
-// addTodo("value");
 
 // map the todos from the arrays  
 
@@ -70,8 +58,5 @@ tasks.forEach(task=>{
 }
 
 mapTasks(tasksArr)
-// add event listners
-// addTodoBtn.addEventListener("click", addTodo);
 
-// create button 
 
