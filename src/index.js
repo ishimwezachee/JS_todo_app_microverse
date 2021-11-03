@@ -57,7 +57,7 @@ const addTodo = (id,value) => {
 const mapTasks = (tasks) => {
   tasks.forEach((task) => {
     let index = task.index;
-    let describtion = task.describtion
+    let describtion = task.describtion;
     addTodo(index,describtion);
   });
 };
@@ -65,4 +65,18 @@ const mapTasks = (tasks) => {
 mapTasks(tasksArr);
 
 const checkBoxes = document.querySelectorAll('.check');
+
+// loop to update the the status based on checked value 
+
+checkBoxes.forEach((checkbox,index)=>{
+  checkbox.addEventListener('change',()=>{
+    let taskIndex = tasksArr[index].index
+    if(checkbox.id ==taskIndex){
+      // if(tasksArr[index].completed === false){
+      //   tasksArr[index].completed = true;
+      // }
+      console.log(tasksArr[index])
+    }
+  });
+});
 
