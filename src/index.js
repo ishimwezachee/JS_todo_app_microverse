@@ -27,12 +27,13 @@ const tasksArr = [
 const list = document.querySelector('.list');
 
 // Methods/functions
-const addTodo = (value) => {
+const addTodo = (id,value) => {
   const listItem = document.createElement('li');
   listItem.classList.add('list-item');
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
   checkbox.classList.add('check');
+  checkbox.id = id;
   const para = document.createElement('p');
   para.classList.add('task');
   para.textContent = value;
@@ -49,10 +50,19 @@ const addTodo = (value) => {
 
 // map the todos from the arrays
 
+// update status method 
+
+
+
 const mapTasks = (tasks) => {
   tasks.forEach((task) => {
-    addTodo(task.describtion);
+    let index = task.index;
+    let describtion = task.describtion
+    addTodo(index,describtion);
   });
 };
 
 mapTasks(tasksArr);
+
+const checkBoxes = document.querySelectorAll('.check');
+
