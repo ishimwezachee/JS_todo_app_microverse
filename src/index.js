@@ -1,6 +1,7 @@
 import './style.css';
+import updateStatus from './status.js';
 
-const tasksArr = [
+let tasksArr = [
   {
     index: 0,
     describtion: 'Wake up',
@@ -23,19 +24,31 @@ const tasksArr = [
   },
 ];
 
+// get data from localStorage
+const savedData = localStorage.getItem('todos');
+if (savedData && savedData !== null) {
+  tasksArr = JSON.parse(savedData);
+}
+
 // selectors
 const list = document.querySelector('.list');
 
-// Methods/functions
-const addTodo = (value) => {
+function saveLocalTodos(todo) {
+  localStorage.setItem('todos', JSON.stringify(todo));
+}
+
+const addTodo = (task) => {
   const listItem = document.createElement('li');
   listItem.classList.add('list-item');
+
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
   checkbox.classList.add('check');
+  checkbox.id = task.index;
+
   const para = document.createElement('p');
   para.classList.add('task');
-  para.textContent = value;
+  para.textContent = task.describtion;
   const trash = document.createElement('i');
   trash.classList.add('fas', 'fa-trash-alt');
   const div = document.createElement('div');
@@ -47,12 +60,29 @@ const addTodo = (value) => {
   list.appendChild(listItem);
 };
 
-// map the todos from the arrays
-
 const mapTasks = (tasks) => {
   tasks.forEach((task) => {
-    addTodo(task.describtion);
+    addTodo(task);
   });
 };
 
 mapTasks(tasksArr);
+
+const checkBoxes = document.querySelectorAll('.check');
+
+// update the check box based on the data from local storage
+tasksArr.forEach((data, index) => {
+  if (data.index === index) {
+    checkBoxes[index].checked = data.completed;
+  }
+});
+
+checkBoxes.forEach((checkbox, id) => {
+  checkbox.addEventListener('change', () => {
+    const taskIndex = tasksArr[id].index;
+    if (parseInt(checkbox.id, 10) === taskIndex) {
+      updateStatus(tasksArr[id]);
+      saveLocalTodos(tasksArr);
+    }
+  });
+});
