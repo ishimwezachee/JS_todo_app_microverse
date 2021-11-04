@@ -1,7 +1,7 @@
 import './style.css';
 import {updateStatus} from './status.js';
 
-const tasksArr = [
+let tasksArr = [
   {
     index: 0,
     describtion: 'Wake up',
@@ -23,6 +23,13 @@ const tasksArr = [
     completed: false,
   },
 ];
+
+// get data from localStorage 
+const savedData = localStorage.getItem('todos');
+if (savedData && savedData !== null) {
+  tasksArr = JSON.parse(savedData);
+};
+
 
 // selectors
 const list = document.querySelector('.list');
@@ -56,7 +63,6 @@ const addTodo = (task) => {
 };
 
 
-
 const mapTasks = (tasks) => {
   tasks.forEach((task) => {
     addTodo(task);
@@ -67,7 +73,13 @@ mapTasks(tasksArr);
 
 const checkBoxes = document.querySelectorAll('.check');
 
-// loop to update the the status based on checked value 
+// update the check box based on the data from local storage
+tasksArr.forEach((data,index)=>{
+  if(data.index == index){
+    checkBoxes[index].checked = data.completed;
+  }
+});
+
 checkBoxes.forEach((checkbox,id)=>{
   checkbox.addEventListener('change',()=>{
     let taskIndex = tasksArr[id].index;
