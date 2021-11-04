@@ -1,5 +1,5 @@
 import './style.css';
-import {updateStatus} from './status.js';
+import updateStatus from './status.js';
 
 let tasksArr = [
   {
@@ -24,20 +24,18 @@ let tasksArr = [
   },
 ];
 
-// get data from localStorage 
+// get data from localStorage
 const savedData = localStorage.getItem('todos');
 if (savedData && savedData !== null) {
   tasksArr = JSON.parse(savedData);
-};
-
+}
 
 // selectors
 const list = document.querySelector('.list');
 
 function saveLocalTodos(todo) {
-  localStorage.setItem("todos", JSON.stringify(todo));
+  localStorage.setItem('todos', JSON.stringify(todo));
 }
-
 
 const addTodo = (task) => {
   const listItem = document.createElement('li');
@@ -46,7 +44,7 @@ const addTodo = (task) => {
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
   checkbox.classList.add('check');
-  checkbox.id = task.index
+  checkbox.id = task.index;
 
   const para = document.createElement('p');
   para.classList.add('task');
@@ -62,7 +60,6 @@ const addTodo = (task) => {
   list.appendChild(listItem);
 };
 
-
 const mapTasks = (tasks) => {
   tasks.forEach((task) => {
     addTodo(task);
@@ -74,19 +71,18 @@ mapTasks(tasksArr);
 const checkBoxes = document.querySelectorAll('.check');
 
 // update the check box based on the data from local storage
-tasksArr.forEach((data,index)=>{
-  if(data.index == index){
+tasksArr.forEach((data, index) => {
+  if (data.index === index) {
     checkBoxes[index].checked = data.completed;
   }
 });
 
-checkBoxes.forEach((checkbox,id)=>{
-  checkbox.addEventListener('change',()=>{
-    let taskIndex = tasksArr[id].index;
-    if(checkbox.id ==taskIndex){
+checkBoxes.forEach((checkbox, id) => {
+  checkbox.addEventListener('change', () => {
+    const taskIndex = tasksArr[id].index;
+    if (parseInt(checkbox.id, 10) === taskIndex) {
       updateStatus(tasksArr[id]);
       saveLocalTodos(tasksArr);
     }
   });
 });
-
