@@ -2,8 +2,8 @@
 const updateStatus = (status) => {
   if (status.completed === false) {
     status.completed = true;
-  } else if (status.completed === true) {
-    status.completed = false;
+  } else{
+    status.completed = false
   }
 };
 

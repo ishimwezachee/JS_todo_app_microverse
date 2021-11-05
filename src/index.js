@@ -1,28 +1,13 @@
 import './style.css';
 import updateStatus from './status.js';
+import {addItem} from './functionalities.js';
 
-let tasksArr = [
-  {
-    index: 0,
-    describtion: 'Wake up',
-    completed: false,
-  },
-  {
-    index: 1,
-    describtion: 'Go to shower',
-    completed: false,
-  },
-  {
-    index: 2,
-    describtion: 'Take breakfast',
-    completed: false,
-  },
-  {
-    index: 3,
-    describtion: 'start class',
-    completed: false,
-  },
-];
+
+let tasksArr=[];
+
+// Add item from inputs 
+const inputField = document.querySelector('.add');
+const Enter = document.querySelector('.arrow');
 
 // get data from localStorage
 const savedData = localStorage.getItem('todos');
@@ -30,13 +15,26 @@ if (savedData && savedData !== null) {
   tasksArr = JSON.parse(savedData);
 }
 
+// save data to local storage methods
+
+function saveLocalTodos(todos) {
+  localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+Enter.addEventListener('click',()=>{
+addNewItem(tasksArr,inputField.value)
+saveLocalTodos(tasksArr);
+window.location.reload();
+});
+
+
+
 // selectors
 const list = document.querySelector('.list');
 
-function saveLocalTodos(todo) {
-  localStorage.setItem('todos', JSON.stringify(todo));
-}
 
+
+// I have been passing the task from the local storage 
 const addTodo = (task) => {
   const listItem = document.createElement('li');
   listItem.classList.add('list-item');
