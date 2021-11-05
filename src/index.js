@@ -1,6 +1,6 @@
 import './style.css';
 import updateStatus from './status.js';
-import {addItem} from './functionalities.js';
+import {addNewItem} from './functionalities.js';
 
 
 let tasksArr=[];
@@ -21,10 +21,17 @@ function saveLocalTodos(todos) {
   localStorage.setItem('todos', JSON.stringify(todos));
 }
 
-Enter.addEventListener('click',()=>{
-addNewItem(tasksArr,inputField.value)
-saveLocalTodos(tasksArr);
-window.location.reload();
+
+// console.log(console.log(inputField.childElementCount))
+// const lastElementsIndex =(e)=> {
+//  console.log(e.target)
+// }
+
+Enter.addEventListener('click',(e)=>{
+  console.log(e.target)
+addNewItem(tasksArr,inputField.value);
+// console.log(lastElementsIndex(inputField))
+// window.location.reload();
 });
 
 
@@ -36,6 +43,7 @@ const list = document.querySelector('.list');
 
 // I have been passing the task from the local storage 
 const addTodo = (task) => {
+  let i=0;
   const listItem = document.createElement('li');
   listItem.classList.add('list-item');
 
@@ -67,6 +75,8 @@ const mapTasks = (tasks) => {
 mapTasks(tasksArr);
 
 const checkBoxes = document.querySelectorAll('.check');
+const deleteBoxes = document.querySelectorAll('.fa-trash-alt');
+
 
 // update the check box based on the data from local storage
 tasksArr.forEach((data, index) => {
@@ -81,6 +91,17 @@ checkBoxes.forEach((checkbox, id) => {
     if (parseInt(checkbox.id, 10) === taskIndex) {
       updateStatus(tasksArr[id]);
       saveLocalTodos(tasksArr);
+      // window.location.reload();
     }
   });
 });
+
+deleteBoxes.forEach((trash,index)=>{
+  trash.addEventListener('click',()=>{
+    if (index !== null && index !== undefined) {
+      tasksArr.splice(index, 1);
+      saveLocalTodos(tasksArr);
+      window.location.reload();
+    }
+  })
+})
