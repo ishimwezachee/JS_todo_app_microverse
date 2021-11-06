@@ -17,12 +17,12 @@ export default class Tasks {
   static createElement(task, list) {
     const listItem = document.createElement('li');
     listItem.classList.add('list-item');
-  
+
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.classList.add('check');
     checkbox.id = task.index;
-    checkbox.checked = task.complete;  
+    checkbox.checked = task.complete;
     const para = document.createElement('p');
     para.classList.add('task');
     para.textContent = task.description;
@@ -51,7 +51,7 @@ export default class Tasks {
 
   static lastElementsIndex(parent) {
     if (parent.childElementCount > 0) {
-      console.log(parent.childElementCount)
+      console.log(parent.childElementCount);
       return parent.childElementCount + 1;
     }
     return 1;
@@ -82,16 +82,16 @@ export default class Tasks {
     textarea.classList.remove('edit');
     e.target.classList.add('edit');
     confirm.addEventListener('click', () => {
-    if (textarea.value === '') {
-      textarea.value = e.target.innerHTML;
-    }
+      if (textarea.value === '') {
+        textarea.value = e.target.innerHTML;
+      }
 
-    Tasks.editTextarea(textarea.value, index);
-    confirm.classList.add('edit');
-    textarea.classList.add('edit');
-    e.target.textContent = textarea.value;
-    e.target.classList.remove('edit');    
-  });
+      Tasks.editTextarea(textarea.value, index);
+      confirm.classList.add('edit');
+      textarea.classList.add('edit');
+      e.target.textContent = textarea.value;
+      e.target.classList.remove('edit');
+    });
   }
 
   static editTextarea(text, index) {
@@ -99,9 +99,10 @@ export default class Tasks {
     tasks[index].description = text;
     Tasks.saveLocalTodos(tasks);
   }
+
   // clear All checked elements
-  static removeAllChecked(checkbox,parentElem){
-    if(checkbox.checked){
+  static removeAllChecked(checkbox, parentElem) {
+    if (checkbox.checked) {
       parentElem.remove();
     }
     const arr = Tasks.localData();
