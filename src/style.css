@@ -92,3 +92,7 @@ main {
   text-decoration: underline;
   cursor: pointer;
 }
+
+.edit {
+  display: none;
+}
