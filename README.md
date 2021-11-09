@@ -11,6 +11,9 @@
 - CSS
 - JS 
 
+## Project Link 
+-  [Link](https://ishimwezachee.github.io/Todo-list/dist/)
+
 ## Getting Started
 To get a local copy, just follow the steps That I am going to mention bellow:
 
