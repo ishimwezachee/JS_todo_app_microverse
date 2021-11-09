@@ -10,6 +10,8 @@
 - HTML5 
 - CSS
 - JS 
+- Jest
+
 
 ## Getting Started
 To get a local copy, just follow the steps That I am going to mention bellow:
