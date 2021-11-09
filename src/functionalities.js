@@ -51,7 +51,6 @@ export default class Tasks {
 
   static lastElementsIndex(parent) {
     if (parent.childElementCount > 0) {
-      console.log(parent.childElementCount);
       return parent.childElementCount + 1;
     }
     return 1;
