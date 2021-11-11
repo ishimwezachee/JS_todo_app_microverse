@@ -10,6 +10,8 @@
 - HTML5 
 - CSS
 - JS 
+- Jest
+
 
 ## Project Link 
 -  [Link](https://ishimwezachee.github.io/Todo-list/dist/)

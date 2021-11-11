@@ -5,7 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "webpack serve --open",
-    "build": "webpack"
+    "build": "webpack",
+    "test":"jest"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "eslint-plugin-import": "^2.25.2",
     "hint": "^6.1.7",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.3.1",
     "style-loader": "^3.3.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
@@ -34,6 +36,5 @@
     "webpack": "^5.61.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.4.0"
-  },
-  "dependencies": {}
+  }
 }
