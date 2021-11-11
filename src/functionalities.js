@@ -101,7 +101,7 @@ export default class Tasks {
   }
 
   // clear All checked elements
-  static removeAllChecked(checkbox, parentElem) {
+  static removeAllChecked(checkbox, parentElem) { 
     if (checkbox.checked) {
       parentElem.remove();
     }
