@@ -51,7 +51,6 @@ export default class Tasks {
 
   static lastElementsIndex(parent) {
     if (parent.childElementCount > 0) {
-      console.log(parent.childElementCount);
       return parent.childElementCount + 1;
     }
     return 1;
@@ -105,22 +104,41 @@ export default class Tasks {
       e.target.textContent = textarea.value;
       e.target.classList.remove('edit');
     });
+  };
+
+  static editeTextAreaDom (arr,index,text){
+   return arr[index].description = text;
   }
 
   static editTextarea(text, index) {
     const tasks = Tasks.localData();
-    tasks[index].description = text;
+    Tasks.editeTextAreaDom(tasks,index,text);
     Tasks.saveLocalTodos(tasks);
   }
+  
+  static removeCheckeDom(box,parent){
+   if(box.checked){
+    return parent.remove();
+   }
+  }
+
+  static removeCheckedInLocal(arr){
+    return arr.filter(task=>!task.complete)
+  }
+
 
   // clear All checked elements
   static removeAllChecked(checkbox, parentElem) { 
-    if (checkbox.checked) {
-      parentElem.remove();
-    }
+    Tasks.removeCheckeDom(checkbox,parentElem)
     const arr = Tasks.localData();
-    const unChecked = arr.filter((task) => !task.complete);
+    const unChecked = Tasks.removeCheckedInLocal(arr)
     Tasks.organizeIndexes(unChecked);
     Tasks.saveLocalTodos(unChecked);
+  }
+  // update task status 
+  static completeStatus(id,e){
+    const tasks = Tasks.localData();
+      tasks[id].complete = e.target.checked;
+      Tasks.saveLocalTodos(tasks);
   }
 }
