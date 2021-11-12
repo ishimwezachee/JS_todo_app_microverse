@@ -26,7 +26,7 @@ const deleteBoxes = document.querySelectorAll('.fa-trash-alt');
 
 checkBoxes.forEach((checkbox, id) => {
   checkbox.addEventListener('change', (e) => {
-    Tasks.completeStatus(id,e)
+    Tasks.completeStatus(id, e);
   });
 });
 
