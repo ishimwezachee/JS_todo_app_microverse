@@ -116,6 +116,31 @@ describe('should remove all checked Items',()=>{
      });
  
  });
+
+ describe('should edit Item',()=>{
+    test('should edit Item from local storage',()=>{
+   let index = 0;
+   let storage = new MockStorage();
+   let data = [];
+   data.push(task)
+   storage.setItem('list',data);
+   const arr = storage.getItem('list');
+   let text = 'Hello world';
+   const result = Tasks.editeTextAreaDom(arr,index,text);
+   expect(result).toBe('Hello world')
+    });
+ test('should Edit Item in the browser',()=>{
+     const inputValue = EditDom.window.document.getElementById('edit').value;
+     let index = 0;
+     let storage = new MockStorage();
+     let data = [];
+     data.push(task);
+     storage.setItem('list',data);
+     const arr = storage.getItem('list');
+    expect(Tasks.editeTextAreaDom(arr,index,inputValue)).toBe('hello')
+ });
+});
+
  
  
 
