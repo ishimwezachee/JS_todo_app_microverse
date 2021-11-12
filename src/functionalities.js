@@ -64,14 +64,27 @@ export default class Tasks {
     return arr;
   }
 
+  // remove to local storage
+
+  static removeToLocalStorage(arr,index){
+   return arr.splice(index,1)
+  }
+
   // remove Element
+
+  static removeElementDom(trash){
+    return trash.parentElement.remove()
+  }
+
   static removeElement(index, elem) {
     const arr = Tasks.localData();
-    arr.splice(index, 1);
+    // arr.splice(index, 1);
+    Tasks.removeToLocalStorage(arr,index)
     Tasks.organizeIndexes(arr);
     Tasks.saveLocalTodos(arr);
     // Remove from HTML
-    elem.parentElement.remove();
+    Tasks.remveElementDom(elem)
+    // elem.parentElement.remove();
   }
 
   // edit element
