@@ -26,13 +26,7 @@ const deleteBoxes = document.querySelectorAll('.fa-trash-alt');
 
 checkBoxes.forEach((checkbox, id) => {
   checkbox.addEventListener('change', (e) => {
-    const tasks = Tasks.localData();
-    const taskIndex = tasks[id].index;
-    if (parseInt(checkbox.id, 10) === taskIndex) {
-      tasks[id].complete = e.target.checked;
-      Tasks.saveLocalTodos(tasks);
-      // location.reload();
-    }
+    Tasks.completeStatus(id, e);
   });
 });
 

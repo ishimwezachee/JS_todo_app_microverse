@@ -63,14 +63,27 @@ export default class Tasks {
     return arr;
   }
 
+  // remove to local storage
+
+  static removeToLocalStorage(arr, index) {
+    return arr.splice(index, 1);
+  }
+
   // remove Element
+
+  static removeElementDom(trash) {
+    return trash.parentElement.remove();
+  }
+
   static removeElement(index, elem) {
     const arr = Tasks.localData();
-    arr.splice(index, 1);
+    // arr.splice(index, 1);
+    Tasks.removeToLocalStorage(arr, index);
     Tasks.organizeIndexes(arr);
     Tasks.saveLocalTodos(arr);
     // Remove from HTML
-    elem.parentElement.remove();
+    Tasks.remveElementDom(elem);
+    // elem.parentElement.remove();
   }
 
   // edit element
@@ -93,20 +106,40 @@ export default class Tasks {
     });
   }
 
+  static editeTextAreaDom(arr, index, text) {
+    arr[index].description = text;
+    return arr[index].description;
+  }
+
   static editTextarea(text, index) {
     const tasks = Tasks.localData();
-    tasks[index].description = text;
+    Tasks.editeTextAreaDom(tasks, index, text);
     Tasks.saveLocalTodos(tasks);
+  }
+
+  static removeCheckeDom(box, parent) {
+    if (box.checked) {
+      parent.remove();
+    }
+  }
+
+  static removeCheckedInLocal(arr) {
+    return arr.filter((task) => !task.complete);
   }
 
   // clear All checked elements
   static removeAllChecked(checkbox, parentElem) {
-    if (checkbox.checked) {
-      parentElem.remove();
-    }
+    Tasks.removeCheckeDom(checkbox, parentElem);
     const arr = Tasks.localData();
-    const unChecked = arr.filter((task) => !task.complete);
+    const unChecked = Tasks.removeCheckedInLocal(arr);
     Tasks.organizeIndexes(unChecked);
     Tasks.saveLocalTodos(unChecked);
+  }
+
+  // update task status
+  static completeStatus(id, e) {
+    const tasks = Tasks.localData();
+    tasks[id].complete = e.target.checked;
+    Tasks.saveLocalTodos(tasks);
   }
 }
